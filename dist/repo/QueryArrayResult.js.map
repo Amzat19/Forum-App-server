@@ -1,0 +1,1 @@
+{"version":3,"file":"QueryArrayResult.js","sourceRoot":"","sources":["../../src/repo/QueryArrayResult.ts"],"names":[],"mappings":";;;AAAA,MAAa,gBAAgB;IACzB,YAAmB,QAAwB,EAAS,QAAmB;QAApD,aAAQ,GAAR,QAAQ,CAAgB;QAAS,aAAQ,GAAR,QAAQ,CAAW;IAAI,CAAC;CAC/E;AAFD,4CAEC;AAED,MAAa,cAAc;IACvB,YAAmB,QAAwB,EAAS,MAAU;QAA3C,aAAQ,GAAR,QAAQ,CAAgB;QAAS,WAAM,GAAN,MAAM,CAAI;IAAI,CAAC;CACtE;AAFD,wCAEC"}

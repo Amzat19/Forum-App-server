@@ -9,10 +9,10 @@ import typeDefs from "./gql/typeDefs";
 import resolvers from "./gql/resolvers";
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
 import cors from "cors"
-import { loadEnv } from "./common/envLoader";
+// import { loadEnv } from "./common/envLoader";
 import { DataSource } from "typeorm"
 // import { AppDataSource } from './data-source';
-loadEnv();
+// loadEnv();
 
 require("dotenv").config();
 
@@ -21,7 +21,11 @@ const router = express.Router();
 const redis = new Redis({
     port: Number(process.env.REDIS_PORT),
     host: process.env.REDIS_HOST,
-    password: process.env.REDIS_PASSWORD
+    password: process.env.REDIS_PASSWORD,
+    username: process.env.REDIS_USERNAME,
+    tls: {
+        rejectUnauthorized: false
+    }
 });
 const RedisStore = connectRedis(session);
 const redisStore = new RedisStore({
@@ -63,7 +67,8 @@ export const AppDataSource = new DataSource({
     database: process.env.PG_DATABASE,
     synchronize: Boolean(process.env.PG_SYNCHRONIZE),
     logging: Boolean(process.env.PG_LOGGING),
-    entities: [entitiesPath]
+    entities: [entitiesPath],
+    ssl: true
 });
 
 AppDataSource.initialize()

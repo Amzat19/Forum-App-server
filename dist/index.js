@@ -15,16 +15,18 @@ const typeDefs_1 = __importDefault(require("./gql/typeDefs"));
 const resolvers_1 = __importDefault(require("./gql/resolvers"));
 const apollo_server_core_1 = require("apollo-server-core");
 const cors_1 = __importDefault(require("cors"));
-const envLoader_1 = require("./common/envLoader");
 const typeorm_1 = require("typeorm");
-(0, envLoader_1.loadEnv)();
 require("dotenv").config();
 const app = (0, express_1.default)();
 const router = express_1.default.Router();
 const redis = new ioredis_1.default({
     port: Number(process.env.REDIS_PORT),
     host: process.env.REDIS_HOST,
-    password: process.env.REDIS_PASSWORD
+    password: process.env.REDIS_PASSWORD,
+    username: process.env.REDIS_USERNAME,
+    tls: {
+        rejectUnauthorized: false
+    }
 });
 const RedisStore = (0, connect_redis_1.default)(express_session_1.default);
 const redisStore = new RedisStore({
@@ -59,7 +61,8 @@ exports.AppDataSource = new typeorm_1.DataSource({
     database: process.env.PG_DATABASE,
     synchronize: Boolean(process.env.PG_SYNCHRONIZE),
     logging: Boolean(process.env.PG_LOGGING),
-    entities: [entitiesPath]
+    entities: [entitiesPath],
+    ssl: true
 });
 exports.AppDataSource.initialize()
     .then(() => {

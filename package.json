@@ -6,7 +6,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "ts-node-dev --respawn src/index.ts",
-        "build": "del-cli dist && cpy dev-config/* dist && cpy dev-config/.env dist && tsc"
+        "build": "del-cli dist && tsc"
     },
     "keywords": [],
     "author": "",
@@ -27,10 +27,10 @@
         "graphql-middleware": "^6.1.32",
         "graphql-subscriptions": "^2.0.0",
         "graphql-tools": "^4.0.8",
-        "ioredis": "^4.17.3",
+        "ioredis": "^5.0.4",
         "mongoose": "^6.6.0",
         "pg": "^8.8.0",
-        "typeorm": "^0.3.9"
+        "typeorm": "^0.3.17"
     },
     "devDependencies": {
         "@types/bcryptjs": "^2.4.2",
@@ -42,6 +42,8 @@
         "@types/ioredis": "^4.17.4",
         "@types/pg": "^8.6.5",
         "@types/validator": "^13.7.6",
+        "cpy": "^10.1.0",
+        "del-cli": "^5.0.0",
         "ts-node-dev": "^2.0.0",
         "typescript": "^4.7.4"
     }

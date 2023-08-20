@@ -84,7 +84,8 @@ const apolloServer = new ApolloServer({
     context: ({ req, res }: any) => ({ req, res }),
     plugins: [
         ApolloServerPluginLandingPageGraphQLPlayground(),
-    ]
+    ],
+    cache: 'bounded'
 });
 apolloServer.start().then(res => {
     apolloServer.applyMiddleware({ app, cors: false })

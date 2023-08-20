@@ -76,7 +76,8 @@ const apolloServer = new apollo_server_express_1.ApolloServer({
     context: ({ req, res }) => ({ req, res }),
     plugins: [
         (0, apollo_server_core_1.ApolloServerPluginLandingPageGraphQLPlayground)(),
-    ]
+    ],
+    cache: 'bounded'
 });
 apolloServer.start().then(res => {
     apolloServer.applyMiddleware({ app, cors: false });

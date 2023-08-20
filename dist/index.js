@@ -16,7 +16,6 @@ const resolvers_1 = __importDefault(require("./gql/resolvers"));
 const apollo_server_core_1 = require("apollo-server-core");
 const cors_1 = __importDefault(require("cors"));
 const typeorm_1 = require("typeorm");
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 require("dotenv").config();
 const app = (0, express_1.default)();
 const router = express_1.default.Router();

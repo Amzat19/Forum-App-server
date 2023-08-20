@@ -77,12 +77,13 @@ const apolloServer = new apollo_server_express_1.ApolloServer({
     plugins: [
         (0, apollo_server_core_1.ApolloServerPluginLandingPageGraphQLPlayground)(),
     ],
+    introspection: true,
     cache: 'bounded'
 });
 apolloServer.start().then(res => {
     apolloServer.applyMiddleware({ app, cors: { credentials: true, origin: [`${process.env.CLIENT_URL}`] } });
 });
 app.listen({ port: process.env.PORT || 8080 }, () => {
-    console.log(`Server ready at https://forum-app-server.onrender.com/${apolloServer.graphqlPath}`);
+    console.log(`Server ready at https://forum-app-server.onrender.com${apolloServer.graphqlPath}`);
 });
 //# sourceMappingURL=index.js.map

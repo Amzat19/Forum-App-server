@@ -84,6 +84,7 @@ const apolloServer = new ApolloServer({
     plugins: [
         ApolloServerPluginLandingPageGraphQLPlayground(),
     ],
+    introspection: true,
     cache: 'bounded'
 });
 apolloServer.start().then(res => {
@@ -92,5 +93,5 @@ apolloServer.start().then(res => {
 
 
 app.listen({ port: process.env.PORT || 8080 }, () => {
-    console.log(`Server ready at https://forum-app-server.onrender.com/${apolloServer.graphqlPath}`);
+    console.log(`Server ready at https://forum-app-server.onrender.com${apolloServer.graphqlPath}`);
 })

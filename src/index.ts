@@ -22,10 +22,7 @@ const redis = new Redis({
     port: Number(process.env.REDIS_PORT),
     host: process.env.REDIS_HOST,
     password: process.env.REDIS_PASSWORD,
-    username: process.env.REDIS_USERNAME,
-    tls: {
-        rejectUnauthorized: false,
-    }
+    username: process.env.REDIS_USERNAME
 });
 const RedisStore = connectRedis(session);
 const redisStore = new RedisStore({
@@ -46,7 +43,7 @@ app.use(
         cookie: {
             path: "/",
             httpOnly: true,
-            secure: false,
+            secure: true,
             maxAge: 1000 * 60 * 60 * 24,
         },
 
@@ -93,5 +90,5 @@ apolloServer.start().then(res => {
 
 
 app.listen({ port: process.env.PORT || 8080 }, () => {
-    console.log(`Server ready at http://localhost:${process.env.PORT}${apolloServer.graphqlPath}`);
+    console.log(`Server ready at https://forum-app-server.onrender.com/${apolloServer.graphqlPath}`);
 })

@@ -45,7 +45,7 @@ app.use(
         saveUninitialized: false,
         cookie: {
             path: "/",
-            httpOnly: true,
+            httpOnly: false,
             secure: true,
             maxAge: 1000 * 60 * 60 * 24,
         }
@@ -90,7 +90,6 @@ const apolloServer = new ApolloServer({
 apolloServer.start().then(res => {
     apolloServer.applyMiddleware({ app, cors: { credentials: true, origin: [`${process.env.CLIENT_URL}`] } })
 });
-
 
 app.listen({ port: process.env.PORT || 8080 }, () => {
     console.log(`Server ready at https://forum-app-server.onrender.com${apolloServer.graphqlPath}`);

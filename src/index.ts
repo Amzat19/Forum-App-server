@@ -68,8 +68,7 @@ export const AppDataSource = new DataSource({
     database: process.env.PG_DATABASE,
     synchronize: Boolean(process.env.PG_SYNCHRONIZE),
     logging: Boolean(process.env.PG_LOGGING),
-    entities: [entitiesPath],
-    ssl: true
+    entities: [entitiesPath]
 });
 
 AppDataSource.initialize()

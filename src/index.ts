@@ -87,7 +87,7 @@ const apolloServer = new ApolloServer({
     cache: 'bounded'
 });
 apolloServer.start().then(res => {
-    apolloServer.applyMiddleware({ app, cors: false })
+    apolloServer.applyMiddleware({ app, cors: { credentials: true, origin: [`${process.env.CLIENT_URL}`] } })
 });
 
 

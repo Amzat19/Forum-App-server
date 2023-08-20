@@ -22,7 +22,10 @@ const redis = new Redis({
     port: Number(process.env.REDIS_PORT),
     host: process.env.REDIS_HOST,
     password: process.env.REDIS_PASSWORD,
-    username: process.env.REDIS_USERNAME
+    username: process.env.REDIS_USERNAME,
+    tls: {
+        rejectUnauthorized: false
+    }
 });
 const RedisStore = connectRedis(session);
 const redisStore = new RedisStore({
@@ -45,8 +48,7 @@ app.use(
             httpOnly: true,
             secure: true,
             maxAge: 1000 * 60 * 60 * 24,
-        },
-
+        }
     } as any)
 );
 app.use(router);

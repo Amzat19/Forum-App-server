@@ -23,7 +23,10 @@ const redis = new ioredis_1.default({
     port: Number(process.env.REDIS_PORT),
     host: process.env.REDIS_HOST,
     password: process.env.REDIS_PASSWORD,
-    username: process.env.REDIS_USERNAME
+    username: process.env.REDIS_USERNAME,
+    tls: {
+        rejectUnauthorized: false
+    }
 });
 const RedisStore = (0, connect_redis_1.default)(express_session_1.default);
 const redisStore = new RedisStore({
@@ -44,7 +47,7 @@ app.use((0, express_session_1.default)({
         httpOnly: true,
         secure: true,
         maxAge: 1000 * 60 * 60 * 24,
-    },
+    }
 }));
 app.use(router);
 const entitiesPath = __dirname + process.env.PG_ENTITIES;

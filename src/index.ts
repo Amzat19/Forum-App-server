@@ -25,7 +25,7 @@ const redis = new Redis({
     password: process.env.REDIS_PASSWORD,
     username: process.env.REDIS_USERNAME,
     tls: {
-        rejectUnauthorized: false
+        rejectUnauthorized: false,
     }
 });
 const RedisStore = connectRedis(session);
@@ -93,6 +93,6 @@ apolloServer.start().then(res => {
 });
 
 
-app.listen({ port: process.env.SERVER_PORT }, () => {
-    console.log(`Server ready at http://localhost:${process.env.SERVER_PORT}${apolloServer.graphqlPath}`);
+app.listen({ port: process.env.PORT || 8080 }, () => {
+    console.log(`Server ready at http://localhost:${process.env.PORT}${apolloServer.graphqlPath}`);
 })

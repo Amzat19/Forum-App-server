@@ -14,6 +14,7 @@ import { DataSource } from "typeorm"
 // import { AppDataSource } from './data-source';
 // loadEnv();
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 require("dotenv").config();
 
 const app = express();

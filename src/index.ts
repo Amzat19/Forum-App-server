@@ -45,7 +45,7 @@ app.use(
         saveUninitialized: false,
         cookie: {
             path: "/",
-            httpOnly: false,
+            httpOnly: true,
             secure: true,
             maxAge: 1000 * 60 * 60 * 24,
         }
@@ -93,4 +93,4 @@ apolloServer.start().then(res => {
 
 app.listen({ port: process.env.PORT || 8080 }, () => {
     console.log(`Server ready at https://forum-app-server.onrender.com${apolloServer.graphqlPath}`);
-})
+});
